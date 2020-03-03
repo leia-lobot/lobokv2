@@ -2,16 +2,16 @@
 
 namespace App\Http\Requests;
 
-use App\TaskTag;
+use App\ReservationStatus;
 use Gate;
 use Illuminate\Foundation\Http\FormRequest;
 use Symfony\Component\HttpFoundation\Response;
 
-class UpdateTaskTagRequest extends FormRequest
+class UpdateReservationStatusRequest extends FormRequest
 {
     public function authorize()
     {
-        abort_if(Gate::denies('task_tag_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+        abort_if(Gate::denies('reservation_status_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         return true;
     }
@@ -20,7 +20,8 @@ class UpdateTaskTagRequest extends FormRequest
     {
         return [
             'name' => [
-                'required'],
+                'required'
+            ],
         ];
     }
 }

@@ -2,16 +2,16 @@
 
 namespace App\Http\Requests;
 
-use App\TaskStatus;
+use App\ReservationStatus;
 use Gate;
 use Illuminate\Foundation\Http\FormRequest;
 use Symfony\Component\HttpFoundation\Response;
 
-class StoreTaskStatusRequest extends FormRequest
+class StoreReservationStatusRequest extends FormRequest
 {
     public function authorize()
     {
-        abort_if(Gate::denies('task_status_create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+        abort_if(Gate::denies('reservation_status_create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         return true;
     }
@@ -20,7 +20,8 @@ class StoreTaskStatusRequest extends FormRequest
     {
         return [
             'name' => [
-                'required'],
+                'required'
+            ],
         ];
     }
 }

@@ -20,12 +20,5 @@ Route::group(['prefix' => 'v1', 'as' => 'api.', 'namespace' => 'Api\V1\Admin', '
     Route::apiResource('companies', 'CompanyApiController');
 
     // Task Statuses
-    Route::apiResource('task-statuses', 'TaskStatusApiController');
-
-    // Task Tags
-    Route::apiResource('task-tags', 'TaskTagApiController');
-
-    // Tasks
-    Route::post('tasks/media', 'TaskApiController@storeMedia')->name('tasks.storeMedia');
-    Route::apiResource('tasks', 'TaskApiController');
+    Route::apiResource('reservation-statuses', 'ReservationStatusApiController');
 });

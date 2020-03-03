@@ -194,63 +194,23 @@ class PermissionsTableSeeder extends Seeder
             ],
             [
                 'id'    => '47',
-                'title' => 'task_status_create',
+                'title' => 'reservation_status_create',
             ],
             [
                 'id'    => '48',
-                'title' => 'task_status_edit',
+                'title' => 'reservation_status_edit',
             ],
             [
                 'id'    => '49',
-                'title' => 'task_status_show',
+                'title' => 'reservation_status_show',
             ],
             [
                 'id'    => '50',
-                'title' => 'task_status_delete',
+                'title' => 'reservation_status_delete',
             ],
             [
                 'id'    => '51',
-                'title' => 'task_status_access',
-            ],
-            [
-                'id'    => '52',
-                'title' => 'task_tag_create',
-            ],
-            [
-                'id'    => '53',
-                'title' => 'task_tag_edit',
-            ],
-            [
-                'id'    => '54',
-                'title' => 'task_tag_show',
-            ],
-            [
-                'id'    => '55',
-                'title' => 'task_tag_delete',
-            ],
-            [
-                'id'    => '56',
-                'title' => 'task_tag_access',
-            ],
-            [
-                'id'    => '57',
-                'title' => 'task_create',
-            ],
-            [
-                'id'    => '58',
-                'title' => 'task_edit',
-            ],
-            [
-                'id'    => '59',
-                'title' => 'task_show',
-            ],
-            [
-                'id'    => '60',
-                'title' => 'task_delete',
-            ],
-            [
-                'id'    => '61',
-                'title' => 'task_access',
+                'title' => 'reservation_status_access',
             ],
             [
                 'id'    => '62',

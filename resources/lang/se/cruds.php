@@ -201,25 +201,9 @@ return [
         'title'          => 'Task management',
         'title_singular' => 'Task management',
     ],
-    'taskStatus'       => [
+    'reservationStatus'       => [
         'title'          => 'Statuses',
         'title_singular' => 'Status',
-        'fields'         => [
-            'id'                => 'ID',
-            'id_helper'         => '',
-            'name'              => 'Name',
-            'name_helper'       => '',
-            'created_at'        => 'Created at',
-            'created_at_helper' => '',
-            'updated_at'        => 'Updated At',
-            'updated_at_helper' => '',
-            'deleted_at'        => 'Deleted At',
-            'deleted_at_helper' => '',
-        ],
-    ],
-    'taskTag'          => [
-        'title'          => 'Tags',
-        'title_singular' => 'Tag',
         'fields'         => [
             'id'                => 'ID',
             'id_helper'         => '',

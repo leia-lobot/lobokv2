@@ -2,16 +2,16 @@
 
 namespace App\Http\Requests;
 
-use App\Task;
+use App\ReservationStatus;
 use Gate;
 use Illuminate\Foundation\Http\FormRequest;
 use Symfony\Component\HttpFoundation\Response;
 
-class MassDestroyTaskRequest extends FormRequest
+class MassDestroyReservationStatusRequest extends FormRequest
 {
     public function authorize()
     {
-        abort_if(Gate::denies('task_delete'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+        abort_if(Gate::denies('reservation_status_delete'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         return true;
     }
@@ -20,7 +20,7 @@ class MassDestroyTaskRequest extends FormRequest
     {
         return [
             'ids'   => 'required|array',
-            'ids.*' => 'exists:tasks,id',
+            'ids.*' => 'exists:reservation_statuses,id',
         ];
     }
 }

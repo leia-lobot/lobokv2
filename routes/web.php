@@ -62,18 +62,8 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::resource('change-passwords', 'ChangePasswordController', ['except' => ['create', 'store', 'edit', 'update', 'show', 'destroy']]);
 
     // Task Statuses
-    Route::delete('task-statuses/destroy', 'TaskStatusController@massDestroy')->name('task-statuses.massDestroy');
-    Route::resource('task-statuses', 'TaskStatusController');
-
-    // Task Tags
-    Route::delete('task-tags/destroy', 'TaskTagController@massDestroy')->name('task-tags.massDestroy');
-    Route::resource('task-tags', 'TaskTagController');
-
-    // Tasks
-    Route::delete('tasks/destroy', 'TaskController@massDestroy')->name('tasks.massDestroy');
-    Route::post('tasks/media', 'TaskController@storeMedia')->name('tasks.storeMedia');
-    Route::post('tasks/ckmedia', 'TaskController@storeCKEditorImages')->name('tasks.storeCKEditorImages');
-    Route::resource('tasks', 'TaskController');
+    Route::delete('reservation-statuses/destroy', 'ReservationStatusController@massDestroy')->name('reservation-statuses.massDestroy');
+    Route::resource('reservation-statuses', 'ReservationStatusController');
 
     // Tasks Calendars
     Route::resource('tasks-calendars', 'TasksCalendarController', ['except' => ['create', 'store', 'edit', 'update', 'show', 'destroy']]);

@@ -5,11 +5,11 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class TaskStatus extends Model
+class ReservationStatus extends Model
 {
     use SoftDeletes;
 
-    public $table = 'task_statuses';
+    public $table = 'reservation_statuses';
 
     protected $dates = [
         'created_at',
