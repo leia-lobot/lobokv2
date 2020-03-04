@@ -11,14 +11,17 @@ class ReservationStatusTableSeeder extends Seeder
             [
                 'id'   => '1',
                 'name' => 'Pending',
+                'color' => '#dc3545',
             ],
             [
                 'id'   => '2',
                 'name' => 'Confirmed',
+                'color' => '#28a745',
             ],
             [
                 'id'   => '3',
                 'name' => 'Queued',
+                'color' => '#ffc107',
             ],
         ];
 

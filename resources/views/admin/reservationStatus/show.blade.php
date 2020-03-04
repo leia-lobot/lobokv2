@@ -31,6 +31,14 @@
                             {{ $reservationStatus->name }}
                         </td>
                     </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.reservationStatus.fields.color') }}
+                        </th>
+                        <td>
+                            {{ $reservationStatus->color }}
+                        </td>
+                    </tr>
                 </tbody>
             </table>
             <div class="form-group">

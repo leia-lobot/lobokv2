@@ -23,6 +23,17 @@
                 <span class="help-block">{{ trans('cruds.reservationStatus.fields.name_helper') }}</span>
             </div>
             <div class="form-group">
+                <label class="required" for="color">{{ trans('cruds.reservationStatus.fields.color') }}</label>
+                <input class="form-control {{ $errors->has('color') ? 'is-invalid' : '' }}" type="text" name="color" id="color" value="{{ old('color', $reservationStatus->color) }}" required>
+                @if($errors->has('color'))
+                    <div class="invalid-feedback">
+                        {{ $errors->first('color') }}
+                    </div>
+                @endif
+                <span class="help-block">{{ trans('cruds.reservationStatus.fields.color_helper') }}</span>
+            </div>
+
+            <div class="form-group">
                 <button class="btn btn-danger" type="submit">
                     {{ trans('global.save') }}
                 </button>
@@ -34,3 +45,11 @@
 
 
 @endsection
+
+@section('scripts')
+    @parent
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-colorpicker/2.5.3/js/bootstrap-colorpicker.min.js"></script>
+    <script>
+        $('#color').colorpicker();
+    </script>
+@stop

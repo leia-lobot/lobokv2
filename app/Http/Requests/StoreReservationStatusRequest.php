@@ -22,6 +22,9 @@ class StoreReservationStatusRequest extends FormRequest
             'name' => [
                 'required'
             ],
+            'color' => [
+                'required'
+            ],
         ];
     }
 }

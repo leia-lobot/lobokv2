@@ -22,6 +22,9 @@ class UpdateReservationStatusRequest extends FormRequest
             'name' => [
                 'required'
             ],
+            'color' => [
+                'required'
+            ],
         ];
     }
 }

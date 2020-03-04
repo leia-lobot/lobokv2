@@ -29,6 +29,9 @@
                             {{ trans('cruds.reservationStatus.fields.name') }}
                         </th>
                         <th>
+                            {{ trans('cruds.reservationStatus.fields.color') }}
+                        </th>
+                        <th>
                             &nbsp;
                         </th>
                     </tr>
@@ -44,6 +47,9 @@
                         </td>
                         <td>
                             {{ $reservationStatus->name ?? '' }}
+                        </td>
+                        <td>
+                            {{ $reservationStatus->color ?? '' }}
                         </td>
                         <td>
                             @can('reservation_status_show')
