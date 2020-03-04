@@ -25,6 +25,7 @@ class Reservation extends Model
         'stop_time',
         'start_time',
         'company_id',
+        'status_id',
         'created_at',
         'updated_at',
         'deleted_at',
@@ -49,5 +50,11 @@ class Reservation extends Model
     public function company()
     {
         return $this->belongsTo(Company::class, 'company_id');
+    }
+
+    public function status()
+    {
+        return $this->belongsTo(ReservationStatus::class, 'status_id');
+
     }
 }

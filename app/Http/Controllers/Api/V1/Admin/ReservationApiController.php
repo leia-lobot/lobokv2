@@ -17,7 +17,7 @@ class ReservationApiController extends Controller
     {
         abort_if(Gate::denies('reservation_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        return new ReservationResource(Reservation::with(['resource', 'company'])->get());
+        return new ReservationResource(Reservation::with(['resource', 'company', 'status'])->get());
     }
 
     public function store(StoreReservationRequest $request)
@@ -33,7 +33,7 @@ class ReservationApiController extends Controller
     {
         abort_if(Gate::denies('reservation_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        return new ReservationResource($reservation->load(['resource', 'company']));
+        return new ReservationResource($reservation->load(['resource', 'company', 'status']));
     }
 
     public function update(UpdateReservationRequest $request, Reservation $reservation)

@@ -9,6 +9,7 @@ use App\Http\Requests\StoreReservationRequest;
 use App\Http\Requests\UpdateReservationRequest;
 use App\Reservation;
 use App\Resource;
+use App\ReservationStatus;
 use Gate;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -32,7 +33,9 @@ class ReservationController extends Controller
 
         $companies = Company::all()->pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        return view('admin.reservations.create', compact('resources', 'companies'));
+        $statuses = ReservationStatus::all()->pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
+
+        return view('admin.reservations.create', compact('resources', 'companies', 'statuses'));
     }
 
     public function store(StoreReservationRequest $request)
@@ -50,9 +53,11 @@ class ReservationController extends Controller
 
         $companies = Company::all()->pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        $reservation->load('resource', 'company');
+        $statuses = ReservationStatus::all()->pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        return view('admin.reservations.edit', compact('resources', 'companies', 'reservation'));
+        $reservation->load('resource', 'company', 'status');
+
+        return view('admin.reservations.edit', compact('resources', 'companies', 'reservation', 'statuses'));
     }
 
     public function update(UpdateReservationRequest $request, Reservation $reservation)
@@ -66,7 +71,7 @@ class ReservationController extends Controller
     {
         abort_if(Gate::denies('reservation_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $reservation->load('resource', 'company');
+        $reservation->load('resource', 'company', 'status');
 
         return view('admin.reservations.show', compact('reservation'));
     }

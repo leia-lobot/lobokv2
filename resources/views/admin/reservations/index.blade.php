@@ -44,6 +44,9 @@
                             {{ trans('cruds.reservation.fields.extras') }}
                         </th>
                         <th>
+                            {{ trans('cruds.reservation.fields.status') }}
+                        </th>
+                        <th>
                             &nbsp;
                         </th>
                     </tr>
@@ -74,6 +77,9 @@
                         </td>
                         <td>
                             {{ $reservation->extras ?? '' }}
+                        </td>
+                        <td>
+                            {{ $reservation->status->name ?? '' }}
                         </td>
                         <td>
                             @can('reservation_show')

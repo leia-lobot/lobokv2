@@ -153,6 +153,8 @@ return [
             'company_helper'    => '',
             'extras'            => 'Extra tjänster',
             'extras_helper'     => '',
+            'status'            => 'Status',
+            'status_helper'     => '',
         ],
     ],
     'company'          => [
@@ -204,13 +206,15 @@ return [
         'title_singular' => 'Task management',
     ],
     'reservationStatus'       => [
-        'title'          => 'Statuses',
+        'title'          => 'Status',
         'title_singular' => 'Status',
         'fields'         => [
             'id'                => 'ID',
             'id_helper'         => '',
             'name'              => 'Namn',
             'name_helper'       => '',
+            'color'              => 'Färg',
+            'color_helper'       => '',
             'created_at'        => 'Skapad',
             'created_at_helper' => '',
             'updated_at'        => 'Uppdaterad',

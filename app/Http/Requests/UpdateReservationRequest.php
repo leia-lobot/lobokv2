@@ -34,6 +34,9 @@ class UpdateReservationRequest extends FormRequest
             'company_id'  => [
                 'required',
                 'integer'],
+            'status_id'   => [
+                'required',
+                'integer'],
         ];
     }
 }

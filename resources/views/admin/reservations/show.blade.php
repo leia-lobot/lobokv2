@@ -71,6 +71,14 @@
                             {{ $reservation->extras }}
                         </td>
                     </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.reservation.fields.status') }}
+                        </th>
+                        <td>
+                            {{ $reservation->status->name ?? '' }}
+                        </td>
+                    </tr>
                 </tbody>
             </table>
             <div class="form-group">

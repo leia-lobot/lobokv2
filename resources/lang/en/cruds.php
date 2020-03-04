@@ -153,6 +153,8 @@ return [
             'company_helper'    => '',
             'extras'            => 'Extras',
             'extras_helper'     => '',
+            'status'            => 'Status',
+            'status_helper'     => '',
         ],
     ],
     'company'          => [
@@ -211,6 +213,8 @@ return [
             'id_helper'         => '',
             'name'              => 'Name',
             'name_helper'       => '',
+            'color'              => 'Color',
+            'color_helper'       => '',
             'created_at'        => 'Created at',
             'created_at_helper' => '',
             'updated_at'        => 'Updated At',
