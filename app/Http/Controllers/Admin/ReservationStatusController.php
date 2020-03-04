@@ -19,14 +19,14 @@ class ReservationStatusController extends Controller
 
         $reservationStatuses = ReservationStatus::all();
 
-        return view('admin.reservationStatuses.index', compact('reservationStatuses'));
+        return view('admin.reservationStatus.index', compact('reservationStatuses'));
     }
 
     public function create()
     {
         abort_if(Gate::denies('reservation_status_create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        return view('admin.reservationStatuses.create');
+        return view('admin.reservationStatus.create');
     }
 
     public function store(StoreReservationStatusRequest $request)
@@ -54,7 +54,7 @@ class ReservationStatusController extends Controller
     {
         abort_if(Gate::denies('reservation_status_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        return view('admin.reservationStatuses.show', compact('reservationStatus'));
+        return view('admin.reservationStatus.show', compact('reservationStatus'));
     }
 
     public function destroy(ReservationStatus $reservationStatus)
