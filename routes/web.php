@@ -53,7 +53,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::resource('my-calendars', 'MyCalendarController', ['except' => ['create', 'store', 'edit', 'update', 'show', 'destroy']]);
 
     // Resource Calendars
-    Route::resource('resource-calendars', 'ResourceCalendarController', ['except' => ['create', 'store', 'edit', 'update', 'show', 'destroy']]);
+    Route::resource('resource-calendars', 'ResourceCalendarController', ['except' => ['create', 'store', 'edit', 'update', 'destroy']]);
 
     // Profiles
     Route::resource('profiles', 'ProfileController', ['except' => ['create', 'store', 'edit', 'update', 'show', 'destroy']]);
