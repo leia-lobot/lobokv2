@@ -34,6 +34,9 @@
                         <th>
                             &nbsp;
                         </th>
+                        <th>
+                            &nbsp;
+                        </th>
                     </tr>
                 </thead>
                 <tbody>
@@ -51,6 +54,7 @@
                         <td>
                             {{ $reservationStatus->color ?? '' }}
                         </td>
+                        <td style="background-color:{{ $reservationStatus->color }}"> </td>
                         <td>
                             @can('reservation_status_show')
                             <a class="btn btn-xs btn-primary"
