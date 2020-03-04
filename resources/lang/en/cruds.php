@@ -151,6 +151,8 @@ return [
             'deleted_at_helper' => '',
             'company'           => 'Company',
             'company_helper'    => '',
+            'extras'            => 'Extras',
+            'extras_helper'     => '',
         ],
     ],
     'company'          => [

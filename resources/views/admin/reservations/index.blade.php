@@ -1,13 +1,13 @@
 @extends('layouts.admin')
 @section('content')
 @can('reservation_create')
-    <div style="margin-bottom: 10px;" class="row">
-        <div class="col-lg-12">
-            <a class="btn btn-success" href="{{ route("admin.reservations.create") }}">
-                {{ trans('global.add') }} {{ trans('cruds.reservation.title_singular') }}
-            </a>
-        </div>
+<div style="margin-bottom: 10px;" class="row">
+    <div class="col-lg-12">
+        <a class="btn btn-success" href="{{ route("admin.reservations.create") }}">
+            {{ trans('global.add') }} {{ trans('cruds.reservation.title_singular') }}
+        </a>
     </div>
+</div>
 @endcan
 <div class="card">
     <div class="card-header">
@@ -41,58 +41,68 @@
                             {{ trans('cruds.reservation.fields.company') }}
                         </th>
                         <th>
+                            {{ trans('cruds.reservation.fields.extras') }}
+                        </th>
+                        <th>
                             &nbsp;
                         </th>
                     </tr>
                 </thead>
                 <tbody>
                     @foreach($reservations as $key => $reservation)
-                        <tr data-entry-id="{{ $reservation->id }}">
-                            <td>
+                    <tr data-entry-id="{{ $reservation->id }}">
+                        <td>
 
-                            </td>
-                            <td>
-                                {{ $reservation->id ?? '' }}
-                            </td>
-                            <td>
-                                {{ $reservation->date ?? '' }}
-                            </td>
-                            <td>
-                                {{ $reservation->start_time ?? '' }}
-                            </td>
-                            <td>
-                                {{ $reservation->stop_time ?? '' }}
-                            </td>
-                            <td>
-                                {{ $reservation->resource->name ?? '' }}
-                            </td>
-                            <td>
-                                {{ $reservation->company->name ?? '' }}
-                            </td>
-                            <td>
-                                @can('reservation_show')
-                                    <a class="btn btn-xs btn-primary" href="{{ route('admin.reservations.show', $reservation->id) }}">
-                                        {{ trans('global.view') }}
-                                    </a>
-                                @endcan
+                        </td>
+                        <td>
+                            {{ $reservation->id ?? '' }}
+                        </td>
+                        <td>
+                            {{ $reservation->date ?? '' }}
+                        </td>
+                        <td>
+                            {{ $reservation->start_time ?? '' }}
+                        </td>
+                        <td>
+                            {{ $reservation->stop_time ?? '' }}
+                        </td>
+                        <td>
+                            {{ $reservation->resource->name ?? '' }}
+                        </td>
+                        <td>
+                            {{ $reservation->company->name ?? '' }}
+                        </td>
+                        <td>
+                            {{ $reservation->extras ?? '' }}
+                        </td>
+                        <td>
+                            @can('reservation_show')
+                            <a class="btn btn-xs btn-primary"
+                                href="{{ route('admin.reservations.show', $reservation->id) }}">
+                                {{ trans('global.view') }}
+                            </a>
+                            @endcan
 
-                                @can('reservation_edit')
-                                    <a class="btn btn-xs btn-info" href="{{ route('admin.reservations.edit', $reservation->id) }}">
-                                        {{ trans('global.edit') }}
-                                    </a>
-                                @endcan
+                            @can('reservation_edit')
+                            <a class="btn btn-xs btn-info"
+                                href="{{ route('admin.reservations.edit', $reservation->id) }}">
+                                {{ trans('global.edit') }}
+                            </a>
+                            @endcan
 
-                                @can('reservation_delete')
-                                    <form action="{{ route('admin.reservations.destroy', $reservation->id) }}" method="POST" onsubmit="return confirm('{{ trans('global.areYouSure') }}');" style="display: inline-block;">
-                                        <input type="hidden" name="_method" value="DELETE">
-                                        <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                                        <input type="submit" class="btn btn-xs btn-danger" value="{{ trans('global.delete') }}">
-                                    </form>
-                                @endcan
+                            @can('reservation_delete')
+                            <form action="{{ route('admin.reservations.destroy', $reservation->id) }}" method="POST"
+                                onsubmit="return confirm('{{ trans('global.areYouSure') }}');"
+                                style="display: inline-block;">
+                                <input type="hidden" name="_method" value="DELETE">
+                                <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                                <input type="submit" class="btn btn-xs btn-danger" value="{{ trans('global.delete') }}">
+                            </form>
+                            @endcan
 
-                            </td>
+                        </td>
 
-                        </tr>
+                    </tr>
                     @endforeach
                 </tbody>
             </table>

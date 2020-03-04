@@ -63,6 +63,14 @@
                             {{ $reservation->company->name ?? '' }}
                         </td>
                     </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.reservation.fields.extras') }}
+                        </th>
+                        <td>
+                            {{ $reservation->extras }}
+                        </td>
+                    </tr>
                 </tbody>
             </table>
             <div class="form-group">
