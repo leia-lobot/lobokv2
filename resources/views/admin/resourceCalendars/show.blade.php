@@ -24,19 +24,12 @@
 <script>
     $(document).ready(function() {
             // page is now ready, initialize the calendar...
+            events={!! json_encode($events) !!};
             $('#calendar').fullCalendar({
                 // put your options and callbacks here
-                events : [
-@foreach($events as $event)
-@if($event->due_date)
-                            {
-                                title : '{{ $event->name }}',
-                                start : '{{ \Carbon\Carbon::createFromFormat(config('panel.date_format'),$event->due_date)->format('Y-m-d') }}',
-                                url : '{{ url('admin/reservations').'/'.$event->id.'/edit' }}'
-                            },
-@endif
-@endforeach
-                ]
+                events : events
+
+
             })
         });
 </script>

@@ -22,7 +22,19 @@ class ResourceCalendarController extends Controller
     {
 
         $resource = Resource::where('id', $id)->firstOrFail();
-        $events = Reservation::where('resource_id', $id)->get();
+        $reservations = Reservation::where('resource_id', $id)->with('company')->get();
+        $events = collect();
+
+        foreach ($reservations as $reservation) {
+            $start = $reservation->date . ' ' . $reservation->start_time;
+
+            $events->push([
+                'title' => $reservation->company->name,
+                'start' => \Carbon\Carbon::createFromFormat(config('panel.datetime_format'),$start)->format('Y-m-d'),
+                'url' => url('admin/reservations').'/'.$reservation->id.'/edit'
+            ]);
+        }
+
         $name = $resource->name;
 
         return view('admin.resourceCalendars.show', compact(['events', 'name']));
