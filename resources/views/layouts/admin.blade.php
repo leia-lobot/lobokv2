@@ -3,7 +3,8 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
@@ -16,7 +17,9 @@
     <link href="https://cdn.datatables.net/buttons/1.2.4/css/buttons.dataTables.min.css" rel="stylesheet" />
     <link href="https://cdn.datatables.net/select/1.3.0/css/select.dataTables.min.css" rel="stylesheet" />
     <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.5/css/select2.min.css" rel="stylesheet" />
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker.min.css" rel="stylesheet" />
+    <link
+        href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker.min.css"
+        rel="stylesheet" />
     <link href="https://unpkg.com/@coreui/coreui@2.1.16/dist/css/coreui.min.css" rel="stylesheet" />
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" rel="stylesheet" />
     <link href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.5.1/min/dropzone.min.css" rel="stylesheet" />
@@ -39,16 +42,19 @@
 
         <ul class="nav navbar-nav ml-auto">
             @if(count(config('panel.available_languages', [])) > 1)
-                <li class="nav-item dropdown d-md-down-none">
-                    <a class="nav-link" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
-                        {{ strtoupper(app()->getLocale()) }}
-                    </a>
-                    <div class="dropdown-menu dropdown-menu-right">
-                        @foreach(config('panel.available_languages') as $langLocale => $langName)
-                            <a class="dropdown-item" href="{{ url()->current() }}?change_language={{ $langLocale }}">{{ strtoupper($langLocale) }} ({{ $langName }})</a>
-                        @endforeach
-                    </div>
-                </li>
+            <li class="nav-item dropdown d-md-down-none">
+                <a class="nav-link" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
+                    aria-expanded="false">
+                    {{ strtoupper(app()->getLocale()) }}
+                </a>
+                <div class="dropdown-menu dropdown-menu-right">
+                    @foreach(config('panel.available_languages') as $langLocale => $langName)
+                    <a class="dropdown-item"
+                        href="{{ url()->current() }}?change_language={{ $langLocale }}">{{ strtoupper($langLocale) }}
+                        ({{ $langName }})</a>
+                    @endforeach
+                </div>
+            </li>
             @endif
 
             <ul class="navbar-nav ml-auto">
@@ -56,27 +62,30 @@
                     <a href="#" class="nav-link" data-toggle="dropdown">
                         <i class="far fa-bell"></i>
                         @php($alertsCount = \Auth::user()->userUserAlerts()->where('read', false)->count())
-                            @if($alertsCount > 0)
-                                <span class="badge badge-warning navbar-badge">
-                                    {{ $alertsCount }}
-                                </span>
-                            @endif
+                        @if($alertsCount > 0)
+                        <span class="badge badge-warning navbar-badge">
+                            {{ $alertsCount }}
+                        </span>
+                        @endif
                     </a>
                     <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-                        @if(count($alerts = \Auth::user()->userUserAlerts()->withPivot('read')->limit(10)->orderBy('created_at', 'ASC')->get()->reverse()) > 0)
-                            @foreach($alerts as $alert)
-                                <div class="dropdown-item">
-                                    <a href="{{ $alert->alert_link ? $alert->alert_link : "#" }}" target="_blank" rel="noopener noreferrer">
-                                        @if($alert->pivot->read === 0) <strong> @endif
-                                            {{ $alert->alert_text }}
-                                            @if($alert->pivot->read === 0) </strong> @endif
-                                    </a>
-                                </div>
-                            @endforeach
+                        @if(count($alerts =
+                        \Auth::user()->userUserAlerts()->withPivot('read')->limit(10)->orderBy('created_at',
+                        'ASC')->get()->reverse()) > 0)
+                        @foreach($alerts as $alert)
+                        <div class="dropdown-item">
+                            <a href="{{ $alert->alert_link ? $alert->alert_link : "#" }}" target="_blank"
+                                rel="noopener noreferrer">
+                                @if($alert->pivot->read === 0) <strong> @endif
+                                    {{ $alert->alert_text }}
+                                    @if($alert->pivot->read === 0) </strong> @endif
+                            </a>
+                        </div>
+                        @endforeach
                         @else
-                            <div class="text-center">
-                                {{ trans('global.no_alerts') }}
-                            </div>
+                        <div class="text-center">
+                            {{ trans('global.no_alerts') }}
+                        </div>
                         @endif
                     </div>
                 </li>
@@ -92,22 +101,27 @@
 
             <div style="padding-top: 20px" class="container-fluid">
                 @if(session('message'))
-                    <div class="row mb-2">
-                        <div class="col-lg-12">
-                            <div class="alert alert-success" role="alert">{{ session('message') }}</div>
-                        </div>
+                <div class="row mb-2">
+                    <div class="col-lg-12">
+                        <div class="alert alert-success" role="alert">{{ session('message') }}</div>
                     </div>
+                </div>
                 @endif
                 @if($errors->count() > 0)
-                    <div class="alert alert-danger">
-                        <ul class="list-unstyled">
-                            @foreach($errors->all() as $error)
-                                <li>{{ $error }}</li>
-                            @endforeach
-                        </ul>
-                    </div>
+                <div class="alert alert-danger">
+                    <ul class="list-unstyled">
+                        @foreach($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
                 @endif
-                @yield('content')
+
+                <div id="app">
+                    @yield('content')
+
+                </div>
+
 
             </div>
 
@@ -134,11 +148,15 @@
     <script src="https://cdn.datatables.net/select/1.3.0/js/dataTables.select.min.js"></script>
     <script src="https://cdn.ckeditor.com/ckeditor5/16.0.0/classic/ckeditor.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js"></script>
+    <script
+        src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js">
+    </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.5/js/select2.full.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.5.1/min/dropzone.min.js"></script>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-colorpicker/2.5.3/css/bootstrap-colorpicker.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-colorpicker/2.5.3/css/bootstrap-colorpicker.min.css"
+        rel="stylesheet">
     <script src="{{ asset('js/main.js') }}"></script>
+    <script src="{{ asset('js/app.js') }}"></script>
     <script>
         $(function() {
   let copyButtonTrans = '{{ trans('global.datatables.copy') }}'

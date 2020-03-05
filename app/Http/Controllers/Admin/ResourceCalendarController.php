@@ -31,10 +31,10 @@ class ResourceCalendarController extends Controller
 
             $events->push([
                 'title' => $reservation->company->name,
-                'start' => \Carbon\Carbon::createFromFormat(config('panel.datetime_format'),$start)->format('Y-m-d H:i:s'),
-                'end' => \Carbon\Carbon::createFromFormat(config('panel.datetime_format'),$end)->format('Y-m-d H:i:s'),
+                'start' => \Carbon\Carbon::createFromFormat(config('panel.datetime_format'), $start)->format('Y-m-d H:i:s'),
+                'end' => \Carbon\Carbon::createFromFormat(config('panel.datetime_format'), $end)->format('Y-m-d H:i:s'),
                 'backgroundColor' => $reservation->status->color,
-                'url' => url('admin/reservations').'/'.$reservation->id.'/edit'
+
             ]);
         }
 
