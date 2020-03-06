@@ -5,11 +5,12 @@
  */
 
 require("./bootstrap");
-import FullCalendar from "@fullcalendar/vue";
 
 window.Vue = require("vue");
+window.$ = require('jquery');
 
-Vue.use(FullCalendar);
+Vue.component('calendar-component', require('./components/CalendarComponent.vue').default);
+
 
 /**
  * The following block of code may be used to automatically register your
@@ -19,16 +20,16 @@ Vue.use(FullCalendar);
  * Eg. ./components/ExampleComponent.vue -> <example-component></example-component>
  */
 
-const files = require.context("./", true, /\.vue$/i);
-files.keys().map(key =>
-    Vue.component(
-        key
-            .split("/")
-            .pop()
-            .split(".")[0],
-        files(key).default
-    )
-);
+// const files = require.context("./", true, /\.vue$/i);
+// files.keys().map(key =>
+//     Vue.component(
+//         key
+//             .split("/")
+//             .pop()
+//             .split(".")[0],
+//         files(key).default
+//     )
+// );
 
 // Vue.component(
 //     "example-component",

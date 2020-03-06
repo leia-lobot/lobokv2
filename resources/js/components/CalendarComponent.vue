@@ -1,4 +1,6 @@
 <script>
+import axios from "axios";
+
 import FullCalendar from "@fullcalendar/vue";
 import dayGridPlugin from "@fullcalendar/daygrid";
 import timeGridPlugin from "@fullcalendar/timegrid";
@@ -13,25 +15,25 @@ export default {
     components: {
         FullCalendar // make the <FullCalendar> tag available
     },
-    props: ["calendarEvents"],
+
     data() {
         return {
             calendarPlugins: [timeGridPlugin, dayGridPlugin, interactionPlugin],
-            events: [
-                {
-                    title: "Shift",
-                    start: "2020-03-03 10:00:00",
-                    end: "2020-03-03 17:00:00",
-                    backgroundColor: "#dc3545"
-                },
-                {
-                    title: "Shift",
-                    start: "2020-03-03 11:00:00",
-                    end: "2020-03-03 13:00:00",
-                    backgroundColor: "#28a745"
-                }
-            ]
+
+
+            events: "",
         };
+    },
+    created() {
+        this.getEvents();
+    },
+    methods: {
+      getEvents() {
+        axios
+            .get("/api/v1/calendars")
+            .then(resp => (this.events = resp.data.data))
+            .catch(err => console.log(err.response.data));
+        },
     }
 };
 </script>
@@ -41,6 +43,15 @@ export default {
         ref="fullCalendar"
         defaultView="timeGridWeek"
         :plugins="calendarPlugins"
-        :events="calendarEvents"
+        locale="sv"
+        :events="events"
+        :all-day-slot="false"
+        slotDuration="00:30:00"
+        :firstDay=1
+        :businessHours="false"
+        :nowIndicator="true"
+        minTime="07:00:00"
+        maxTime="21:00:00"
+        height="auto"
     />
 </template>

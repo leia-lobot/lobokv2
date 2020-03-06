@@ -7,7 +7,7 @@
     </div>
 
     <div class="card-body">
-        <example-component calendarEvents="{{ json_encode($events) }}"></example-component>
+        <calendar-component></calendar-component>
 
     </div>
 </div>
