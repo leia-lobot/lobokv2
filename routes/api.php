@@ -19,6 +19,9 @@ Route::group(['prefix' => 'v1', 'as' => 'api.', 'namespace' => 'Api\V1\Admin', '
     // Companies
     Route::apiResource('companies', 'CompanyApiController');
 
-    // Task Statuses
+    // Reservation Statuses
     Route::apiResource('reservation-statuses', 'ReservationStatusApiController');
+
+    // Calendar
+    Route::apiResource('calendars', 'CalendarApiController');
 });
