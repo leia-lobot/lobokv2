@@ -13,7 +13,7 @@
             @can('schedule_access')
             <li class="nav-item nav-dropdown">
                 <a class="nav-link  nav-dropdown-toggle" href="#">
-                    <i class="fa-fw fas fa-cogs nav-icon">
+                    <i class="fa-fw fas fa-calendar nav-icon">
 
                     </i>
                     {{ trans('cruds.schedule.title') }}
@@ -125,7 +125,7 @@
             @can('lobok_access')
             <li class="nav-item nav-dropdown">
                 <a class="nav-link  nav-dropdown-toggle" href="#">
-                    <i class="fa-fw fas fa-cogs nav-icon">
+                    <i class="fa-fw fas fa-book nav-icon">
 
                     </i>
                     {{ trans('cruds.lobok.title') }}
@@ -135,7 +135,7 @@
                     <li class="nav-item">
                         <a href="{{ route("admin.resources.index") }}"
                             class="nav-link {{ request()->is('admin/resources') || request()->is('admin/resources/*') ? 'active' : '' }}">
-                            <i class="fa-fw fas fa-cogs nav-icon">
+                            <i class="fa-fw fas fa-door-open nav-icon">
 
                             </i>
                             {{ trans('cruds.resource.title') }}
@@ -146,10 +146,21 @@
                     <li class="nav-item">
                         <a href="{{ route("admin.reservations.index") }}"
                             class="nav-link {{ request()->is('admin/reservations') || request()->is('admin/reservations/*') ? 'active' : '' }}">
-                            <i class="fa-fw fas fa-cogs nav-icon">
+                            <i class="fa-fw fas fa-calendar-alt nav-icon">
 
                             </i>
                             {{ trans('cruds.reservation.title') }}
+                        </a>
+                    </li>
+                    @endcan
+                    @can('reservation_status_access')
+                    <li class="nav-item">
+                        <a href="{{ route("admin.reservation-statuses.index") }}"
+                            class="nav-link {{ request()->is('admin/reservation-statuses') || request()->is('admin/reservation-statuses/*') ? 'active' : '' }}">
+                            <i class="fa-fw fas fa-server nav-icon">
+
+                            </i>
+                            {{ trans('cruds.reservationStatus.title') }}
                         </a>
                     </li>
                     @endcan
@@ -157,7 +168,7 @@
                     <li class="nav-item">
                         <a href="{{ route("admin.companies.index") }}"
                             class="nav-link {{ request()->is('admin/companies') || request()->is('admin/companies/*') ? 'active' : '' }}">
-                            <i class="fa-fw fas fa-cogs nav-icon">
+                            <i class="fa-fw fas fa-address-card nav-icon">
 
                             </i>
                             {{ trans('cruds.company.title') }}
@@ -170,7 +181,7 @@
             @can('my_account_access')
             <li class="nav-item nav-dropdown">
                 <a class="nav-link  nav-dropdown-toggle" href="#">
-                    <i class="fa-fw fas fa-cogs nav-icon">
+                    <i class="fa-fw fas fa-user-cog nav-icon">
 
                     </i>
                     {{ trans('cruds.myAccount.title') }}
@@ -195,40 +206,6 @@
 
                             </i>
                             {{ trans('cruds.changePassword.title') }}
-                        </a>
-                    </li>
-                    @endcan
-                </ul>
-            </li>
-            @endcan
-            @can('task_management_access')
-            <li class="nav-item nav-dropdown">
-                <a class="nav-link  nav-dropdown-toggle" href="#">
-                    <i class="fa-fw fas fa-list nav-icon">
-
-                    </i>
-                    {{ trans('cruds.taskManagement.title') }}
-                </a>
-                <ul class="nav-dropdown-items">
-                    @can('reservation_status_access')
-                    <li class="nav-item">
-                        <a href="{{ route("admin.reservation-statuses.index") }}"
-                            class="nav-link {{ request()->is('admin/reservation-statuses') || request()->is('admin/reservation-statuses/*') ? 'active' : '' }}">
-                            <i class="fa-fw fas fa-server nav-icon">
-
-                            </i>
-                            {{ trans('cruds.reservationStatus.title') }}
-                        </a>
-                    </li>
-                    @endcan
-                    @can('tasks_calendar_access')
-                    <li class="nav-item">
-                        <a href="{{ route("admin.tasks-calendars.index") }}"
-                            class="nav-link {{ request()->is('admin/tasks-calendars') || request()->is('admin/tasks-calendars/*') ? 'active' : '' }}">
-                            <i class="fa-fw fas fa-calendar nav-icon">
-
-                            </i>
-                            {{ trans('cruds.tasksCalendar.title') }}
                         </a>
                     </li>
                     @endcan
