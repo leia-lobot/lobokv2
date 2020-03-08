@@ -10,48 +10,33 @@
                     {{ trans('global.dashboard') }}
                 </a>
             </li>
-            @can('schedule_access')
+            @can('resource_calendar_access')
             <li class="nav-item nav-dropdown">
                 <a class="nav-link  nav-dropdown-toggle" href="#">
                     <i class="fa-fw fas fa-calendar nav-icon">
 
                     </i>
-                    {{ trans('cruds.schedule.title') }}
+                    {{ trans('cruds.resourceCalendar.title') }}
                 </a>
                 <ul class="nav-dropdown-items">
-                    @can('booking_access')
-                    <li class="nav-item">
-                        <a href="{{ route("admin.bookings.index") }}"
-                            class="nav-link {{ request()->is('admin/bookings') || request()->is('admin/bookings/*') ? 'active' : '' }}">
-                            <i class="fa-fw fas fa-cogs nav-icon">
 
-                            </i>
-                            {{ trans('cruds.booking.title') }}
-                        </a>
-                    </li>
-                    @endcan
-                    @can('my_calendar_access')
-                    <li class="nav-item">
-                        <a href="{{ route("admin.my-calendars.index") }}"
-                            class="nav-link {{ request()->is('admin/my-calendars') || request()->is('admin/my-calendars/*') ? 'active' : '' }}">
-                            <i class="fa-fw fas fa-cogs nav-icon">
+                    <!-- TODO: Loop for each venue -->
 
-                            </i>
-                            {{ trans('cruds.myCalendar.title') }}
-                        </a>
-                    </li>
-                    @endcan
-                    @can('resource_calendar_access')
-                    <li class="nav-item">
-                        <a href="{{ route("admin.resource-calendars.index") }}"
-                            class="nav-link {{ request()->is('admin/resource-calendars') || request()->is('admin/resource-calendars/*') ? 'active' : '' }}">
-                            <i class="fa-fw fas fa-cogs nav-icon">
+                    @foreach ($venueItems as $venueItem)
 
-                            </i>
-                            {{ trans('cruds.resourceCalendar.title') }}
-                        </a>
-                    </li>
-                    @endcan
+                        <li class="nav-item">
+                            <a href="{{ route("admin.resource-calendars.show", $venueItem->id) }}"
+                                class="nav-link {{ request()->is('admin/resource-calendars') || request()->is('admin/resource-calendars/*') ? 'active' : '' }}">
+                                <i class="fa-fw fas fa-cogs nav-icon">
+
+                                </i>
+                                {{ $venueItem->name }}
+                            </a>
+                        </li>
+
+                    @endforeach
+
+
                 </ul>
             </li>
             @endcan
@@ -187,6 +172,17 @@
                     {{ trans('cruds.myAccount.title') }}
                 </a>
                 <ul class="nav-dropdown-items">
+                    @can('my_calendar_access')
+                    <li class="nav-item">
+                        <a href="{{ route("admin.my-calendars.index") }}"
+                            class="nav-link {{ request()->is('admin/my-calendars') || request()->is('admin/my-calendars/*') ? 'active' : '' }}">
+                            <i class="fa-fw fas fa-cogs nav-icon">
+
+                            </i>
+                            {{ trans('cruds.myCalendar.title') }}
+                        </a>
+                    </li>
+                    @endcan
                     @can('profile_access')
                     <li class="nav-item">
                         <a href="{{ route("admin.profiles.index") }}"

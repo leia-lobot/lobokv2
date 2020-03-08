@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Resource;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Route;
 
@@ -23,7 +24,13 @@ class RouteServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        // TODO: View Composer?
+        $venues = Resource::get();
+        $venues->only(['id', 'name']);
+
+        //dd($venues);
+
+        view()->share('venueItems', $venues);
 
         parent::boot();
     }
