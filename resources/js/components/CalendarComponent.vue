@@ -25,15 +25,19 @@ export default {
         };
     },
     created() {
-        this.getEvents();
+        let uri = window.location.href.split('/');
+        this.getEvents(uri[uri.length-1]);
     },
     methods: {
-      getEvents() {
+      getEvents(venue) {
         axios
-            .get("/api/v1/calendars")
+            .get("/api/v1/calendars/" + venue)
             .then(resp => (this.events = resp.data.data))
             .catch(err => console.log(err.response.data));
         },
+        getVenue() {
+
+        }
     }
 };
 </script>

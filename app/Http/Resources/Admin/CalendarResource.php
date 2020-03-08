@@ -2,6 +2,7 @@
 
 namespace App\Http\Resources\Admin;
 
+use App\Reservation;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 class CalendarResource extends JsonResource
@@ -11,7 +12,8 @@ class CalendarResource extends JsonResource
         // TODO: return calendar object with events array
 
         $events = collect();
-        $reservations = $this->flatten();
+        $resource = $this;
+        $reservations = Reservation::where('resource_id',$resource->id)->get();
 
         foreach ($reservations as $reservation) {
             $start = $reservation->date . ' ' . $reservation->start_time;

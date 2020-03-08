@@ -24,4 +24,8 @@ class Resource extends Model
         'updated_at',
         'deleted_at',
     ];
+
+    public function reservations() {
+        return $this->hasMany('App\Reservation');
+    }
 }
