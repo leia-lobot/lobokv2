@@ -5,6 +5,8 @@ import FullCalendar from "@fullcalendar/vue";
 import dayGridPlugin from "@fullcalendar/daygrid";
 import timeGridPlugin from "@fullcalendar/timegrid";
 import interactionPlugin from "@fullcalendar/interaction";
+import allLocales from '@fullcalendar/core/locales-all';
+
 
 // must manually include stylesheets for each plugin
 import "@fullcalendar/core/main.css";
@@ -19,8 +21,6 @@ export default {
     data() {
         return {
             calendarPlugins: [timeGridPlugin, dayGridPlugin, interactionPlugin],
-
-
             events: "",
         };
     },
@@ -38,6 +38,15 @@ export default {
         getVenue() {
 
         }
+    },
+    computed: {
+        getLang() {
+            // TODO: make less ugly
+            return document.documentElement.getAttribute('lang') == 'se'? 'sv' : 'en';
+        },
+        getLocales() {
+            return allLocales;
+        }
     }
 };
 </script>
@@ -47,7 +56,8 @@ export default {
         ref="fullCalendar"
         defaultView="timeGridWeek"
         :plugins="calendarPlugins"
-        locale="sv"
+        v-bind:locale="getLang"
+        :locales="getLocales"
         :events="events"
         :all-day-slot="false"
         slotDuration="00:30:00"
@@ -57,5 +67,6 @@ export default {
         minTime="07:00:00"
         maxTime="21:00:00"
         height="auto"
+        :weekNumbers="true"
     />
 </template>
