@@ -189,10 +189,6 @@ class PermissionsTableSeeder extends Seeder
                 'title' => 'change_password_access',
             ],
             [
-                'id'    => '46',
-                'title' => 'task_management_access',
-            ],
-            [
                 'id'    => '47',
                 'title' => 'reservation_status_create',
             ],
@@ -211,10 +207,6 @@ class PermissionsTableSeeder extends Seeder
             [
                 'id'    => '51',
                 'title' => 'reservation_status_access',
-            ],
-            [
-                'id'    => '62',
-                'title' => 'tasks_calendar_access',
             ],
         ];
 
