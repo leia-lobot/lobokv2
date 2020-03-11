@@ -19,6 +19,9 @@ class Reservation extends Model
         'updated_at',
         'deleted_at',
     ];
+    protected $attributes = [
+        'status_id' => '1'
+    ];
 
     protected $fillable = [
         'date',

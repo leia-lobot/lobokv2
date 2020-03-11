@@ -61,10 +61,11 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     // Change Passwords
     Route::resource('change-passwords', 'ChangePasswordController', ['except' => ['create', 'store', 'edit', 'update', 'show', 'destroy']]);
 
-    // Task Statuses
+    // Reservation Statuses
     Route::delete('reservation-statuses/destroy', 'ReservationStatusController@massDestroy')->name('reservation-statuses.massDestroy');
     Route::resource('reservation-statuses', 'ReservationStatusController');
 
-    // Tasks Calendars
-    Route::resource('tasks-calendars', 'TasksCalendarController', ['except' => ['create', 'store', 'edit', 'update', 'show', 'destroy']]);
+      // User Reservations
+      Route::delete('reservations/destroy', 'ReservationController@massDestroy')->name('reservations.massDestroy');
+      Route::resource('user-reservations', 'UserReservationController');
 });
