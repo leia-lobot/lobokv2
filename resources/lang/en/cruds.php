@@ -188,10 +188,26 @@ return [
     'resourceCalendar' => [
         'title'          => 'Resource Calendar',
         'title_singular' => 'Resource Calendar',
+        'fields'         => [
+            'id'                => 'ID',
+            'id_helper'         => '',
+            'name'              => 'Name',
+            'name_helper'       => '',
+            'created_at'        => 'Created at',
+            'created_at_helper' => '',
+            'updated_at'        => 'Updated at',
+            'updated_at_helper' => '',
+            'deleted_at'        => 'Deleted at',
+            'deleted_at_helper' => '',
+        ],
     ],
     'myAccount'        => [
         'title'          => 'My Account',
         'title_singular' => 'My Account',
+        'fields'         => [
+            'name'              => 'Name',
+            'name_helper'       => '',
+        ],
     ],
     'profile'          => [
         'title'          => 'Profile',
@@ -201,11 +217,7 @@ return [
         'title'          => 'Change Password',
         'title_singular' => 'Change Password',
     ],
-    'taskManagement'   => [
-        'title'          => 'Task management',
-        'title_singular' => 'Task management',
-    ],
-    'taskStatus'       => [
+    'reservationStatus'       => [
         'title'          => 'Statuses',
         'title_singular' => 'Status',
         'fields'         => [
@@ -222,53 +234,5 @@ return [
             'deleted_at'        => 'Deleted At',
             'deleted_at_helper' => '',
         ],
-    ],
-    'taskTag'          => [
-        'title'          => 'Tags',
-        'title_singular' => 'Tag',
-        'fields'         => [
-            'id'                => 'ID',
-            'id_helper'         => '',
-            'name'              => 'Name',
-            'name_helper'       => '',
-            'created_at'        => 'Created at',
-            'created_at_helper' => '',
-            'updated_at'        => 'Updated At',
-            'updated_at_helper' => '',
-            'deleted_at'        => 'Deleted At',
-            'deleted_at_helper' => '',
-        ],
-    ],
-    'task'             => [
-        'title'          => 'Tasks',
-        'title_singular' => 'Task',
-        'fields'         => [
-            'id'                 => 'ID',
-            'id_helper'          => '',
-            'name'               => 'Name',
-            'name_helper'        => '',
-            'description'        => 'Description',
-            'description_helper' => '',
-            'status'             => 'Status',
-            'status_helper'      => '',
-            'tag'                => 'Tags',
-            'tag_helper'         => '',
-            'attachment'         => 'Attachment',
-            'attachment_helper'  => '',
-            'due_date'           => 'Due date',
-            'due_date_helper'    => '',
-            'assigned_to'        => 'Assigned to',
-            'assigned_to_helper' => '',
-            'created_at'         => 'Created at',
-            'created_at_helper'  => '',
-            'updated_at'         => 'Updated At',
-            'updated_at_helper'  => '',
-            'deleted_at'         => 'Deleted At',
-            'deleted_at_helper'  => '',
-        ],
-    ],
-    'tasksCalendar'    => [
-        'title'          => 'Calendar',
-        'title_singular' => 'Calendar',
     ],
 ];
