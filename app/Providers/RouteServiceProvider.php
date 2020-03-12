@@ -25,12 +25,14 @@ class RouteServiceProvider extends ServiceProvider
     public function boot()
     {
         // TODO: View Composer?
-        $venues = Resource::get();
-        $venues->only(['id', 'name']);
+        if (\Schema::hasTable('resources')) {
+            $venues = Resource::get();
+            $venues->only(['id', 'name']);
 
-        //dd($venues);
+            //dd($venues);
 
-        view()->share('venueItems', $venues);
+            view()->share('venueItems', $venues);
+        }
 
         parent::boot();
     }
@@ -59,8 +61,8 @@ class RouteServiceProvider extends ServiceProvider
     protected function mapWebRoutes()
     {
         Route::middleware('web')
-             ->namespace($this->namespace)
-             ->group(base_path('routes/web.php'));
+            ->namespace($this->namespace)
+            ->group(base_path('routes/web.php'));
     }
 
     /**
@@ -73,8 +75,8 @@ class RouteServiceProvider extends ServiceProvider
     protected function mapApiRoutes()
     {
         Route::prefix('api')
-             ->middleware('api')
-             ->namespace($this->namespace)
-             ->group(base_path('routes/api.php'));
+            ->middleware('api')
+            ->namespace($this->namespace)
+            ->group(base_path('routes/api.php'));
     }
 }
