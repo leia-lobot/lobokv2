@@ -13,6 +13,8 @@ class AddRelationshipFieldsToReservationsTable extends Migration
             $table->foreign('resource_id', 'resource_fk_1060848')->references('id')->on('resources');
             $table->unsignedInteger('company_id');
             $table->foreign('company_id', 'company_fk_1061015')->references('id')->on('companies');
+            $table->unsignedInteger('status_id');
+            $table->foreign('status_id', 'status_fk_1092707')->references('id')->on('reservation_statuses');
         });
     }
 }

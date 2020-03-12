@@ -11,6 +11,7 @@ class CreateReservationStatusesTable extends Migration
         Schema::create('reservation_statuses', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name')->nullable();
+            $table->string('color')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

@@ -13,6 +13,7 @@ class CreateReservationsTable extends Migration
             $table->date('date');
             $table->time('start_time');
             $table->time('stop_time');
+            $table->string('extras')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });
