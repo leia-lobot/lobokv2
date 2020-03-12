@@ -162,51 +162,71 @@ class PermissionsTableSeeder extends Seeder
             ],
             [
                 'id'    => '39',
-                'title' => 'schedule_access',
-            ],
-            [
-                'id'    => '40',
-                'title' => 'booking_access',
-            ],
-            [
-                'id'    => '41',
-                'title' => 'my_calendar_access',
-            ],
-            [
-                'id'    => '42',
-                'title' => 'resource_calendar_access',
-            ],
-            [
-                'id'    => '43',
-                'title' => 'my_account_access',
-            ],
-            [
-                'id'    => '44',
-                'title' => 'profile_access',
-            ],
-            [
-                'id'    => '45',
-                'title' => 'change_password_access',
-            ],
-            [
-                'id'    => '47',
                 'title' => 'reservation_status_create',
             ],
             [
-                'id'    => '48',
+                'id'    => '40',
                 'title' => 'reservation_status_edit',
             ],
             [
-                'id'    => '49',
+                'id'    => '41',
                 'title' => 'reservation_status_show',
             ],
             [
-                'id'    => '50',
+                'id'    => '42',
                 'title' => 'reservation_status_delete',
             ],
             [
-                'id'    => '51',
+                'id'    => '43',
                 'title' => 'reservation_status_access',
+            ],
+            [
+                'id'    => '44',
+                'title' => 'schedule_access',
+            ],
+            [
+                'id'    => '45',
+                'title' => 'booking_access',
+            ],
+            [
+                'id'    => '46',
+                'title' => 'my_calendar_access',
+            ],
+            [
+                'id'    => '47',
+                'title' => 'resource_calendar_access',
+            ],
+            [
+                'id'    => '48',
+                'title' => 'my_account_access',
+            ],
+            [
+                'id'    => '49',
+                'title' => 'profile_access',
+            ],
+            [
+                'id'    => '50',
+                'title' => 'change_password_access',
+            ],
+            [
+                'id'    => '51',
+                'title' => 'client_reservation_create',
+            ],
+            [
+                'id'    => '52',
+                'title' => 'client_reservation_edit',
+            ],
+            [
+                'id'    => '53',
+                'title' => 'client_reservation_show',
+            ],
+            [
+                'id'    => '54',
+                'title' => 'client_reservation_delete',
+            ],
+            [
+                'id'    => '55',
+                'title' => 'client_reservation_access',
             ],
         ];
 

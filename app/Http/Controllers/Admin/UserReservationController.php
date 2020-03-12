@@ -18,13 +18,20 @@ class UserReservationController extends Controller
 {
     public function create()
     {
-        abort_if(Gate::denies('reservation_create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+        abort_if(Gate::denies('client_reservation_create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         $user = auth()->user();
 
         $resources = Resource::all()->pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        $companies = $user->companies()->pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
+        $companies = [];
+
+        if (!Gate::denies('lobok_access')) {
+            $companies = Company::all()->pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
+        } else {
+            $companies = $user->companies()->pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
+        }
+
 
         $statuses = ReservationStatus::all()->pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
@@ -41,7 +48,7 @@ class UserReservationController extends Controller
 
     public function edit(Reservation $reservation)
     {
-        abort_if(Gate::denies('reservation_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+        abort_if(Gate::denies('client_reservation_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         $resources = Resource::all()->pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
@@ -63,7 +70,7 @@ class UserReservationController extends Controller
 
     public function show(Reservation $reservation)
     {
-        abort_if(Gate::denies('reservation_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+        abort_if(Gate::denies('client_reservation_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         $reservation->load('resource', 'company', 'status');
 
@@ -72,7 +79,7 @@ class UserReservationController extends Controller
 
     public function destroy(Reservation $reservation)
     {
-        abort_if(Gate::denies('reservation_delete'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+        abort_if(Gate::denies('client_reservation_delete'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         $reservation->delete();
 

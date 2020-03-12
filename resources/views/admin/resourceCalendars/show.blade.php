@@ -1,14 +1,14 @@
 @extends('layouts.admin')
 @section('content')
 
-@can('reservation_create')
-    <div style="margin-bottom: 10px;" class="row">
-        <div class="col-lg-12">
-            <a class="btn btn-success" href="{{ route("admin.user-reservations.create") }}">
-                {{ trans('global.add') }} {{ trans('cruds.reservation.title_singular') }}
-            </a>
-        </div>
+@can('client_reservation_create')
+<div style="margin-bottom: 10px;" class="row">
+    <div class="col-lg-12">
+        <a class="btn btn-success" href="{{ route("admin.user-reservations.create") }}">
+            {{ trans('global.add') }} {{ trans('cruds.reservation.title_singular') }}
+        </a>
     </div>
+</div>
 @endcan
 
 <div class="card">
@@ -21,7 +21,5 @@
 
     </div>
 </div>
-
-
 
 @endsection
