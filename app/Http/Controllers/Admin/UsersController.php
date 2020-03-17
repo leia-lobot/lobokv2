@@ -28,8 +28,12 @@ class UsersController extends Controller
     {
         abort_if(Gate::denies('user_create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        // TODO: dont get Admin if not Admin
-        $roles = Role::all()->pluck('title', 'id');
+        // Don't get Admin if not Admin
+        if (auth()->user()->is_admin)
+            $roles = Role::all()->pluck('title', 'id');
+        else {
+            $roles = Role::where('id', '!=', 1)->get()->pluck('title', 'id');
+        }
 
         $companies = Company::all()->pluck('name', 'id');
 
@@ -39,10 +43,6 @@ class UsersController extends Controller
     public function store(StoreUserRequest $request)
     {
         $user = User::create($request->all());
-
-        //TODO: make sure roles doesn't contain Admin if not Admin
-        if (in_array(1, $request->input('roles', [])))
-            dd('fail');
         $user->roles()->sync($request->input('roles', []));
         $user->companies()->sync($request->input('companies', []));
 
@@ -53,7 +53,12 @@ class UsersController extends Controller
     {
         abort_if(Gate::denies('user_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $roles = Role::all()->pluck('title', 'id');
+        // Don't get Admin if not Admin
+        if (auth()->user()->is_admin)
+            $roles = Role::all()->pluck('title', 'id');
+        else {
+            $roles = Role::where('id', '!=', 1)->get()->pluck('title', 'id');
+        }
 
         $companies = Company::all()->pluck('name', 'id');
 

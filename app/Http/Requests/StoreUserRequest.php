@@ -5,6 +5,7 @@ namespace App\Http\Requests;
 use App\User;
 use Gate;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 use Symfony\Component\HttpFoundation\Response;
 
 class StoreUserRequest extends FormRequest
@@ -20,21 +21,29 @@ class StoreUserRequest extends FormRequest
     {
         return [
             'name'        => [
-                'required'],
+                'required'
+            ],
             'email'       => [
                 'required',
-                'unique:users'],
+                'unique:users'
+            ],
             'password'    => [
-                'required'],
+                'required'
+            ],
             'roles.*'     => [
-                'integer'],
+                'integer'
+            ],
             'roles'       => [
                 'required',
-                'array'],
+                'array',
+                auth()->user()->is_admin ? '' : Rule::notIn([1])
+            ],
             'companies.*' => [
-                'integer'],
+                'integer'
+            ],
             'companies'   => [
-                'array'],
+                'array'
+            ],
         ];
     }
 }
