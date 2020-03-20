@@ -20,7 +20,7 @@ return [
     'login'                                => 'Login',
     'login_email'                          => 'Email',
     'login_password'                       => 'Lösenord',
-    'login_password_confirmation'          => 'Nytt lösenordsbekräftelse',
+    'login_password_confirmation'          => 'Bekräfta det nya lösenordet',
     'logout'                               => 'Logga ut',
     'month'                                => 'Månad',
     'no'                                   => 'Nej',

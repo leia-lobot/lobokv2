@@ -59,13 +59,14 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::resource('profiles', 'ProfileController', ['except' => ['create', 'store', 'edit', 'update', 'show', 'destroy']]);
 
     // Change Passwords
-    Route::resource('change-passwords', 'ChangePasswordController', ['except' => ['create', 'store', 'edit', 'update', 'show', 'destroy']]);
+    Route::get('change-passwords', 'ChangePasswordController@index')->name('change-passwords.index');
+    Route::post('change-passwords', 'ChangePasswordController@update')->name('change-passwords.update');
 
     // Reservation Statuses
     Route::delete('reservation-statuses/destroy', 'ReservationStatusController@massDestroy')->name('reservation-statuses.massDestroy');
     Route::resource('reservation-statuses', 'ReservationStatusController');
 
-      // User Reservations
-      Route::delete('reservations/destroy', 'ReservationController@massDestroy')->name('reservations.massDestroy');
-      Route::resource('user-reservations', 'UserReservationController');
+    // User Reservations
+    Route::delete('reservations/destroy', 'ReservationController@massDestroy')->name('reservations.massDestroy');
+    Route::resource('user-reservations', 'UserReservationController');
 });
