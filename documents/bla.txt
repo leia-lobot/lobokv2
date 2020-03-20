@@ -1,0 +1,18 @@
+Användare
+- Login
+- 
+
+(A) Rättigheter
+- Admin
+- Kund
+- Gäst
+
+Bokning
+-
+
+GoogleCalendar
+
+
+(B)Tilläggstjänster
+
+(B)Väntelista
