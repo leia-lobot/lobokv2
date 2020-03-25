@@ -18,7 +18,7 @@ class CalendarApiController extends Controller
 
     public function show($id)
     {
-        abort_if(Gate::denies('reservation_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+        abort_if(Gate::denies('calendar_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         $resource = Resource::where('id', $id)->firstOrFail();
         return new CalendarResource($resource);
