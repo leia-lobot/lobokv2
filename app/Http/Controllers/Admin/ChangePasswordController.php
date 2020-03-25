@@ -25,6 +25,7 @@ class ChangePasswordController extends Controller
 
         $user->update($request->all());
 
-        return redirect()->route('home');
+        //TODO: Add status message
+        return redirect()->route('admin.home');
     }
 }
