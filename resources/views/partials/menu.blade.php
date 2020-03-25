@@ -10,7 +10,7 @@
                     {{ trans('global.dashboard') }}
                 </a>
             </li>
-            @can('resource_calendar_access')
+            @can('calendar_access')
             <li class="nav-item nav-dropdown">
                 <a class="nav-link  nav-dropdown-toggle" href="#">
                     <i class="fa-fw fas fa-calendar nav-icon">

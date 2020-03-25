@@ -194,7 +194,7 @@ class PermissionsTableSeeder extends Seeder
             ],
             [
                 'id'    => '47',
-                'title' => 'resource_calendar_access',
+                'title' => 'calendar_access',
             ],
             [
                 'id'    => '48',
